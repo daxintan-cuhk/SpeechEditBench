@@ -1,0 +1,86 @@
+{
+  "benchmark": "SpeechEditBench",
+  "version": "v1.1",
+  "created_utc": "2026-05-11T10:24:36+00:00",
+  "git_head_at_manifest_creation": "2af7c6fc83ca4bef3f7713c2d2f486dcb18cc76c",
+  "asset_scope": [
+    "data/*/samples.jsonl",
+    "data/*/audio/**"
+  ],
+  "notes": [
+    "This manifest records release data assets only.",
+    "Caches, local model outputs, eval_results, and generated reports are not release data assets."
+  ],
+  "totals": {
+    "tasks": 8,
+    "samples": 4700,
+    "audio_files": 5400,
+    "audio_bytes": 2451888084
+  },
+  "tasks": [
+    {
+      "task_id": "acoustic_editing",
+      "samples_jsonl": "data/acoustic_editing/samples.jsonl",
+      "samples": 500,
+      "samples_sha256": "dac443388a61b24279bea87fbfc2de9e65278f5ce94befac1fe0de315ac33bce",
+      "audio_files": 1000,
+      "audio_bytes": 541695630
+    },
+    {
+      "task_id": "compositional_editing",
+      "samples_jsonl": "data/compositional_editing/samples.jsonl",
+      "samples": 400,
+      "samples_sha256": "c356d6feb5a0ad8d35ede1301b928d0d845765b5a1bd317b2a6bb493a4a6ec64",
+      "audio_files": 400,
+      "audio_bytes": 196844990
+    },
+    {
+      "task_id": "content_editing",
+      "samples_jsonl": "data/content_editing/samples.jsonl",
+      "samples": 600,
+      "samples_sha256": "c3a1efb236effc0956cef3f4d28f745cbbe70d19b6ba052eea1ff9886fda01cf",
+      "audio_files": 600,
+      "audio_bytes": 275023742
+    },
+    {
+      "task_id": "emotion_editing",
+      "samples_jsonl": "data/emotion_editing/samples.jsonl",
+      "samples": 1400,
+      "samples_sha256": "cc244c40beeade44a343eee43acdec1e8e3bb6e5b46477dde114fd607a79806c",
+      "audio_files": 1400,
+      "audio_bytes": 642172542
+    },
+    {
+      "task_id": "paralinguistic_editing",
+      "samples_jsonl": "data/paralinguistic_editing/samples.jsonl",
+      "samples": 400,
+      "samples_sha256": "68cd8590567c150d441a31505fe3638839f862acd255f393379257c169e325b6",
+      "audio_files": 400,
+      "audio_bytes": 148370066
+    },
+    {
+      "task_id": "prosody_editing",
+      "samples_jsonl": "data/prosody_editing/samples.jsonl",
+      "samples": 600,
+      "samples_sha256": "c46f71952ab12ac986766d633c33622dda29f2a522f304416d6a3a2fb03430ec",
+      "audio_files": 600,
+      "audio_bytes": 303870444
+    },
+    {
+      "task_id": "speaker_editing",
+      "samples_jsonl": "data/speaker_editing/samples.jsonl",
+      "samples": 200,
+      "samples_sha256": "01279608e93a3b0924df373a88eadd7d6458a0f776541833edfc2715d45a490b",
+      "audio_files": 400,
+      "audio_bytes": 188086504
+    },
+    {
+      "task_id": "style_editing",
+      "samples_jsonl": "data/style_editing/samples.jsonl",
+      "samples": 600,
+      "samples_sha256": "16234f3fa3e29f5188848b3ec9c1e3e55606d505fffacee61b56f5cd38286eaf",
+      "audio_files": 600,
+      "audio_bytes": 155824166
+    }
+  ]
+}

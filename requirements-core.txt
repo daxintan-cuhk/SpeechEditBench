@@ -1,0 +1,10 @@
+# Lightweight dependencies for downloading the Hugging Face release,
+# inspecting metadata, and running dataset audit helpers.
+#
+# Version ranges are based on the local `speecheditbench` conda environment
+# used for the v1.1 public release.
+huggingface_hub>=1.12,<1.13
+requests>=2.33,<2.34
+numpy>=2.4,<2.5
+soundfile>=0.13,<0.14
+packaging>=26,<27
