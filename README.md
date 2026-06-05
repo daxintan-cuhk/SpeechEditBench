@@ -178,13 +178,10 @@ terms when using the released audio assets.
 If you use SpeechEditBench, please cite:
 
 ```bibtex
-@misc{zhang2026speecheditbenchbilingualmultiattributebenchmark,
-      title={SpeechEditBench: A Bilingual Multi-Attribute Benchmark for Instruction-Guided Speech Editing},
-      author={Hanlin Zhang and Daxin Tan and Dehua Tao and Xiao Chen and Haochen Tan and Linqi Song},
-      year={2026},
-      eprint={2606.01804},
-      archivePrefix={arXiv},
-      primaryClass={eess.AS},
-      url={https://arxiv.org/abs/2606.01804},
+@article{zhang2026speecheditbench,
+  title={SpeechEditBench: A Bilingual Multi-Attribute Benchmark for Instruction-Guided Speech Editing},
+  author={Zhang, Hanlin and Tan, Daxin and Tao, Dehua and Chen, Xiao and Tan, Haochen and Song, Linqi},
+  journal={arXiv preprint arXiv:2606.01804},
+  year={2026}
 }
 ```
