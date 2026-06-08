@@ -21,7 +21,7 @@ tags:
 # SpeechEditBench
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/logo.png" alt="SpeechEditBench logo" width="280">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/speecheditbench_logo.png" alt="SpeechEditBench logo" width="280">
 </p>
 
 SpeechEditBench is a bilingual multi-attribute benchmark for
@@ -37,7 +37,7 @@ content.
 ## Benchmark Overview
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/overview.png" alt="SpeechEditBench benchmark overview" width="850">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/speecheditbench_overview.png" alt="SpeechEditBench benchmark overview" width="850">
 </p>
 
 SpeechEditBench contains seven atomic editing tasks and a compositional editing
@@ -57,7 +57,7 @@ split:
 ## Dataset Composition
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/sunburst.png" alt="SpeechEditBench task composition" width="600">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/speecheditbench_sunburst.png" alt="SpeechEditBench task composition" width="600">
 </p>
 
 The v1.1 release contains 4,700 benchmark samples and 5,400 released audio

@@ -1,7 +1,7 @@
 # SpeechEditBench
 
 <p align="center">
-  <img src="figures/logo.png" alt="SpeechEditBench logo" width="300">
+  <img src="figures/speecheditbench_logo.png" alt="SpeechEditBench logo" width="300">
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@ natural-language edit instruction, and the evaluator checks whether a system
 achieves the requested edit while preserving the expected lexical content.
 
 <p align="center">
-  <img src="figures/overview.png" alt="SpeechEditBench benchmark overview" width="920">
+  <img src="figures/speecheditbench_overview.png" alt="SpeechEditBench benchmark overview" width="920">
 </p>
 
 The benchmark covers seven atomic editing tasks and compositional editing:
@@ -40,7 +40,7 @@ The v1.1 release contains 4,700 samples across 8 tasks and 5,400 audio files in
 the full data release.
 
 <p align="center">
-  <img src="figures/sunburst.png" alt="SpeechEditBench task composition" width="620">
+  <img src="figures/speecheditbench_sunburst.png" alt="SpeechEditBench task composition" width="620">
 </p>
 
 The GitHub repository includes `data/*/samples.jsonl` for inspecting task
