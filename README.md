@@ -48,13 +48,20 @@ schemas. Audio files are not stored in git. Download the released audio assets
 from Hugging Face:
 
 ```bash
+git clone https://github.com/daxintan-cuhk/SpeechEditBench.git
+cd SpeechEditBench
+
 python scripts/download_hf_dataset.py \
   --repo-id DiscreteSpeech/SpeechEditBench \
   --revision v1.1
 ```
 
-The download helper fetches `data/**` by default, so it will not overwrite this
-repository's README or documentation.
+The download helper uses the local `samples.jsonl` files to fetch the benchmark
+metadata and referenced audio assets only, so it will not overwrite this
+repository's README or documentation and will not download extra unused audio
+files from the Hugging Face repository. Use `--all-data` to mirror every file
+under `data/**`, or `--all-files` to download the complete Hugging Face
+snapshot.
 
 After download, the repository should contain:
 

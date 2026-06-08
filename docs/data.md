@@ -16,9 +16,12 @@ python scripts/download_hf_dataset.py \
   --revision v1.1
 ```
 
-The download script syncs `data/**` by default so repository files such as
-`README.md` are not overwritten. Pass `--all-files` only if you explicitly want
-the complete Hugging Face snapshot.
+The download script uses the local `samples.jsonl` files to fetch the benchmark
+metadata and referenced audio assets by default. This keeps the local checkout
+aligned with the release manifest and avoids downloading extra unused audio
+files that may exist in the Hugging Face repository. Pass `--all-data` to mirror
+every file under `data/**`, or `--all-files` if you explicitly want the complete
+Hugging Face snapshot.
 
 ## Release Scale
 

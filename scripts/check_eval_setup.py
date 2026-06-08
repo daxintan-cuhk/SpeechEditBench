@@ -18,6 +18,13 @@ from packaging.version import InvalidVersion, Version
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = REPO_ROOT / "data"
 MANIFEST_PATH = REPO_ROOT / "release_manifests" / "v1.1" / "dataset_manifest.json"
+AUDIO_SUFFIXES = (".wav", ".flac", ".mp3", ".ogg", ".m4a", ".aac")
+PATH_KEYS = {
+    "audio_path",
+    "reference_audio_path",
+    "target_reference_path",
+    "reference_wav",
+}
 
 PACKAGE_SPECS = {
     "huggingface_hub": ("huggingface-hub", ">=1.12,<1.13"),
@@ -175,11 +182,10 @@ def _audio_count(task_dir: Path) -> int:
     audio_dir = task_dir / "audio"
     if not audio_dir.exists():
         return 0
-    suffixes = {".wav", ".flac", ".mp3", ".ogg", ".m4a", ".aac"}
     return sum(
         1
         for path in audio_dir.rglob("*")
-        if path.is_file() and path.suffix.lower() in suffixes
+        if path.is_file() and path.suffix.lower() in AUDIO_SUFFIXES
     )
 
 
@@ -195,6 +201,33 @@ def _load_jsonl(path: Path) -> list[dict[str, Any]]:
             if isinstance(row, dict):
                 rows.append(row)
     return rows
+
+
+def _is_data_audio_path(value: str) -> bool:
+    return value.startswith("data/") and value.lower().endswith(AUDIO_SUFFIXES)
+
+
+def _collect_data_audio_paths(value: object, *, key: str | None = None) -> set[str]:
+    paths: set[str] = set()
+    if isinstance(value, dict):
+        for child_key, child_value in value.items():
+            paths.update(_collect_data_audio_paths(child_value, key=str(child_key)))
+        return paths
+    if isinstance(value, list):
+        for child in value:
+            paths.update(_collect_data_audio_paths(child))
+        return paths
+    if isinstance(value, str) and (key in PATH_KEYS or _is_data_audio_path(value)):
+        if _is_data_audio_path(value):
+            paths.add(value)
+    return paths
+
+
+def _declared_audio_paths(samples: list[dict[str, Any]]) -> set[str]:
+    paths: set[str] = set()
+    for sample in samples:
+        paths.update(_collect_data_audio_paths(sample))
+    return paths
 
 
 def _sample_languages(samples: list[dict[str, Any]]) -> set[str]:
@@ -323,15 +356,29 @@ def check_data() -> dict[str, Any]:
         task_dir = DATA_ROOT / task_id
         samples_file = task_dir / "samples.jsonl"
         sample_count = _count_jsonl(samples_file)
-        audio_count = _audio_count(task_dir)
+        samples = _load_jsonl(samples_file)
+        declared_audio_paths = _declared_audio_paths(samples)
+        missing_audio_paths = sorted(
+            path for path in declared_audio_paths if not (REPO_ROOT / path).exists()
+        )
+        declared_audio_count = len(declared_audio_paths)
+        present_audio_count = declared_audio_count - len(missing_audio_paths)
+        expected_audio_count = manifest.get("audio_files")
+        audio_manifest_ok = declared_audio_count == expected_audio_count
+        local_audio_count = _audio_count(task_dir)
         tasks[task_id] = {
             "samples_file": str(samples_file.relative_to(REPO_ROOT)),
             "samples_ok": sample_count == manifest.get("samples"),
             "samples": sample_count,
             "expected_samples": manifest.get("samples"),
-            "audio_files": audio_count,
-            "expected_audio_files": manifest.get("audio_files"),
-            "audio_complete": audio_count == manifest.get("audio_files"),
+            "audio_files": present_audio_count,
+            "expected_audio_files": expected_audio_count,
+            "declared_audio_files": declared_audio_count,
+            "audio_manifest_ok": audio_manifest_ok,
+            "audio_complete": audio_manifest_ok and not missing_audio_paths,
+            "missing_audio_count": len(missing_audio_paths),
+            "missing_audio_files": missing_audio_paths[:20],
+            "extra_audio_files": max(0, local_audio_count - present_audio_count),
         }
     return {
         "manifest": str(MANIFEST_PATH.relative_to(REPO_ROOT)) if MANIFEST_PATH.exists() else None,
@@ -441,10 +488,12 @@ def print_text_report(report: dict[str, Any]) -> None:
         samples = f"{row['samples']}/{row['expected_samples']}"
         samples_status = _status(row["samples_ok"])
         audio_status = _status(row["audio_complete"])
+        extra = row.get("extra_audio_files", 0)
+        extra_note = f" extra={extra}" if extra else ""
         print(
             f"  {task_id:24s} "
             f"samples={samples:11s}({samples_status:7s}) "
-            f"audio={audio:11s}({audio_status:7s})"
+            f"audio={audio:11s}({audio_status:7s}){extra_note}"
         )
 
     print("\nEvaluator model groups")

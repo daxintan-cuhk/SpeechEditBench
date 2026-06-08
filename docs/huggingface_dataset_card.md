@@ -78,6 +78,10 @@ python scripts/download_hf_dataset.py \
   --revision v1.1
 ```
 
+By default, the helper downloads the benchmark metadata and audio files
+referenced by the released `samples.jsonl` files, rather than every extra file
+stored in the Hugging Face repository.
+
 After download, the repository should contain:
 
 ```text
