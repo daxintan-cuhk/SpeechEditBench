@@ -1,9 +1,25 @@
 # SpeechEditBench
 
-SpeechEditBench is a bilingual benchmark for instruction-guided speech editing.
-It evaluates whether a system can apply a requested edit to source speech while
-preserving the expected lexical content. The benchmark covers seven atomic
-editing tasks and compositional editing:
+<p align="center">
+  <img src="figures/logo.png" alt="SpeechEditBench logo" width="360">
+</p>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2606.01804">Paper</a> |
+  <a href="https://huggingface.co/datasets/DiscreteSpeech/SpeechEditBench">Dataset</a> |
+  <a href="docs/evaluation.md">Evaluation Guide</a>
+</p>
+
+SpeechEditBench is a bilingual multi-attribute benchmark for
+instruction-guided speech editing. Each example pairs source speech with a
+natural-language edit instruction, and the evaluator checks whether a system
+achieves the requested edit while preserving the expected lexical content.
+
+<p align="center">
+  <img src="figures/overview.png" alt="SpeechEditBench benchmark overview" width="920">
+</p>
+
+The benchmark covers seven atomic editing tasks and compositional editing:
 
 - `content_editing`
 - `speaker_editing`
@@ -19,6 +35,13 @@ manifest, and user-facing documentation. The full audio assets are distributed
 through Hugging Face.
 
 ## Data
+
+The v1.1 release contains 4,700 samples across 8 tasks and 5,400 audio files in
+the full data release.
+
+<p align="center">
+  <img src="figures/sunburst.png" alt="SpeechEditBench task composition" width="720">
+</p>
 
 The GitHub repository includes `data/*/samples.jsonl` for inspecting task
 schemas. Audio files are not stored in git. Download the released audio assets
@@ -159,9 +182,6 @@ The current release manifest is:
 ```text
 release_manifests/v1.1/dataset_manifest.json
 ```
-
-It records 4,700 samples across 8 tasks and 5,400 audio files in the full data
-release.
 
 ## License
 

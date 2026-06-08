@@ -20,6 +20,10 @@ tags:
 
 # SpeechEditBench
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/logo.png" alt="SpeechEditBench logo" width="320">
+</p>
+
 SpeechEditBench is a bilingual multi-attribute benchmark for
 instruction-guided speech editing. Each example provides source speech and a
 natural-language editing instruction, and the benchmark evaluates whether a
@@ -30,7 +34,11 @@ content.
 - **Code and evaluator:** [github.com/daxintan-cuhk/SpeechEditBench](https://github.com/daxintan-cuhk/SpeechEditBench)
 - **Dataset:** [huggingface.co/datasets/DiscreteSpeech/SpeechEditBench](https://huggingface.co/datasets/DiscreteSpeech/SpeechEditBench)
 
-## Benchmark Tasks
+## Benchmark Overview
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/overview.png" alt="SpeechEditBench benchmark overview" width="850">
+</p>
 
 SpeechEditBench contains seven atomic editing tasks and a compositional editing
 split:
@@ -45,6 +53,12 @@ split:
 | `paralinguistic_editing` | Add or remove breath, laugh, cough, or sigh events. |
 | `acoustic_editing` | Perform speech enhancement or acoustic environment transfer. |
 | `compositional_editing` | Combine multiple editing goals in a single instruction. |
+
+## Dataset Composition
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daxintan-cuhk/SpeechEditBench/master/figures/sunburst.png" alt="SpeechEditBench task composition" width="680">
+</p>
 
 The v1.1 release contains 4,700 benchmark samples and 5,400 released audio
 files across the full task set. The authoritative sample metadata is stored in
