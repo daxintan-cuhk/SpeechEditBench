@@ -1,7 +1,7 @@
 # SpeechEditBench
 
 <p align="center">
-  <img src="figures/logo.png" alt="SpeechEditBench logo" width="360">
+  <img src="figures/logo.png" alt="SpeechEditBench logo" width="300">
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@ The v1.1 release contains 4,700 samples across 8 tasks and 5,400 audio files in
 the full data release.
 
 <p align="center">
-  <img src="figures/sunburst.png" alt="SpeechEditBench task composition" width="720">
+  <img src="figures/sunburst.png" alt="SpeechEditBench task composition" width="620">
 </p>
 
 The GitHub repository includes `data/*/samples.jsonl` for inspecting task
