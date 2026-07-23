@@ -1,0 +1,75 @@
+{
+  "hybrid_version": "calibration452_hybrid_v2",
+  "status": "frozen",
+  "reserve_accessed": false,
+  "stage1": {
+    "model": "Qwen2.5-Omni-7B-GPTQ-Int4",
+    "prompt_version": "v2_contrastive_label_definitions",
+    "label_canonicalization": {
+      "surprised": "surprise"
+    },
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 96,
+      "return_audio": false,
+      "attention_implementation": "sdpa"
+    }
+  },
+  "accepted_rules": [
+    {
+      "rule_name": "en_happy_vs_excited_v1",
+      "language": "en",
+      "stage1_trigger_label": "happy",
+      "candidate_labels": [
+        "happy",
+        "excited"
+      ],
+      "prompt_version": "stage2_en_happy_vs_excited_v1",
+      "generation_max_new_tokens": 48
+    },
+    {
+      "rule_name": "zh_happy_vs_surprise_playfulness_v1",
+      "language": "zh",
+      "stage1_trigger_label": "happy",
+      "candidate_labels": [
+        "happy",
+        "surprise",
+        "playfulness"
+      ],
+      "prompt_version": "stage2_zh_happy_vs_surprise_playfulness_v1",
+      "generation_max_new_tokens": 48
+    },
+    {
+      "rule_name": "en_neutral_dual_pairwise_v1",
+      "language": "en",
+      "stage1_trigger_label": "neutral",
+      "pairwise_detectors": [
+        "neutral_vs_fearful",
+        "neutral_vs_sad"
+      ],
+      "prompt_version": "probe_en_neutral_pairwise_capability_v1",
+      "fusion_policy": {
+        "fearful_only": "fearful",
+        "sad_only": "sad",
+        "both_fire": "neutral",
+        "neither_fires": "neutral",
+        "invalid_output": "neutral"
+      },
+      "generation_max_new_tokens": 32
+    }
+  ],
+  "rejected_rules": [
+    {
+      "rule_name": "en_frustrated_region_v1",
+      "reason": "All 31 outputs remained frustrated; no prediction changed."
+    },
+    {
+      "rule_name": "en_neutral_region_unanchored_v1",
+      "reason": "All 39 outputs remained neutral; no prediction changed."
+    },
+    {
+      "rule_name": "en_neutral_vs_surprise_pairwise",
+      "reason": "Surprise recall was 0.0 in the pairwise capability probe."
+    }
+  ]
+}

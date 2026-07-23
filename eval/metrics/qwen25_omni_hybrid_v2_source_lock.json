@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "judge_version": "qwen25_omni_hybrid_v2",
+  "status": "frozen",
+  "model_revision": "Qwen/Qwen2.5-Omni-7B-GPTQ-Int4@6d33b6bb5114a84de7efd38310779242520e7d4e",
+  "source_revision": "QwenLM/Qwen2.5-Omni@d8a31ca56c0456b6edfcbcbf4bdbb6ae2200ef42",
+  "reserve_predictions_used_for_configuration": false,
+  "files": [
+    {
+      "role": "model_registration",
+      "path": "local_eval/emotion_judge/scripts/qwen25_omni_single_sample_smoke.py",
+      "sha256": "c0694ad7984c31c6e90e8c9d6ce118d32b9dc58e5fc702ab79fe4eee91d2354c"
+    },
+    {
+      "role": "multimodal_inference_helpers",
+      "path": "local_eval/emotion_judge/scripts/run_qwen25_omni_micro5.py",
+      "sha256": "7787aa76001c49c084ca2372d0d91fe97769d070daa9aad78ed68d11a19ec1d1"
+    },
+    {
+      "role": "stage1_prompt_v2",
+      "path": "local_eval/emotion_judge/scripts/run_qwen25_omni_micro5_prompt_v2.py",
+      "sha256": "1c22b725ae8128db6a731a30392f189fd292d64562a9bc63e71cf8d10d0d61d8"
+    },
+    {
+      "role": "en_happy_vs_excited_prompt",
+      "path": "local_eval/emotion_judge/scripts/run_stage2_en_happy_vs_excited.py",
+      "sha256": "70ecbb5e2cd7d5cc0bb58122b0bd300afda8420472223a9c96881083c58c9707"
+    },
+    {
+      "role": "zh_happy_surprise_playfulness_prompt",
+      "path": "local_eval/emotion_judge/scripts/run_stage2_zh_happy_vs_surprise_playfulness.py",
+      "sha256": "6b2c61d204115cea9a15f998b0085b026ff18a6cf997cba9880269cfc5329230"
+    },
+    {
+      "role": "en_neutral_pairwise_prompt",
+      "path": "local_eval/emotion_judge/scripts/probe_en_neutral_pairwise_capability.py",
+      "sha256": "4d3716cb3c8437ba13dd5134baca6fef83898406aa9ec2a588b65ad15fd9e4b4"
+    },
+    {
+      "role": "low_vram_modeling_source",
+      "path": "local_eval/emotion_judge/third_party/Qwen2.5-Omni/low-VRAM-mode/modeling_qwen2_5_omni_low_VRAM_mode.py",
+      "sha256": "93a6f69a703f1e97cfb7526379bd4862b231a6e60ec6a522be671c0d0f16d9e4"
+    },
+    {
+      "role": "hybrid_v2_freeze_record",
+      "path": "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v2/freeze_record.json",
+      "sha256": "b1a5856157c2749da18c9c0bd4240815ec58868498fcbf70399d717cec07b109"
+    },
+    {
+      "role": "hybrid_v2_accepted_rules",
+      "path": "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v2/accepted_rules.json",
+      "sha256": "9a062a6f2f0569bf6e8e05f2dc83c7350dcbf26d2925e8c2a7d0ba324ef1c10a"
+    }
+  ]
+}
