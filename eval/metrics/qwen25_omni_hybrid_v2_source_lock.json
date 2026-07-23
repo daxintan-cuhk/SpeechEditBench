@@ -24,17 +24,17 @@
     {
       "role": "en_happy_vs_excited_prompt",
       "path": "local_eval/emotion_judge/scripts/run_stage2_en_happy_vs_excited.py",
-      "sha256": "70ecbb5e2cd7d5cc0bb58122b0bd300afda8420472223a9c96881083c58c9707"
+      "sha256": "8b80e92df83a99dc8e7a12b1503166fb2a96fd2d28bcfbcf742fc004b8fe0735"
     },
     {
       "role": "zh_happy_surprise_playfulness_prompt",
       "path": "local_eval/emotion_judge/scripts/run_stage2_zh_happy_vs_surprise_playfulness.py",
-      "sha256": "6b2c61d204115cea9a15f998b0085b026ff18a6cf997cba9880269cfc5329230"
+      "sha256": "1f469c355d7fd5f47e18c3e22d62539e15dca97fe71627cbc0371aeaa62b98ae"
     },
     {
       "role": "en_neutral_pairwise_prompt",
       "path": "local_eval/emotion_judge/scripts/probe_en_neutral_pairwise_capability.py",
-      "sha256": "4d3716cb3c8437ba13dd5134baca6fef83898406aa9ec2a588b65ad15fd9e4b4"
+      "sha256": "8916df621cf338dda7368741d4de33c9dcfe3aeea0a4ab0f30ed09b3d771b409"
     },
     {
       "role": "low_vram_modeling_source",
@@ -44,7 +44,7 @@
     {
       "role": "hybrid_v2_freeze_record",
       "path": "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v2/freeze_record.json",
-      "sha256": "b1a5856157c2749da18c9c0bd4240815ec58868498fcbf70399d717cec07b109"
+      "sha256": "2dced9fade11ab4a6d38e25bb5858d1200ec445f922a0e77d3c64d6435d7ec0f"
     },
     {
       "role": "hybrid_v2_accepted_rules",

@@ -3,20 +3,20 @@
   "status": "frozen",
   "reserve_accessed": false,
   "calibration_manifest": {
-    "path": "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/manifests/emotion_judge_calibration452.jsonl",
+    "path": "local_eval/emotion_judge/manifests/emotion_judge_calibration452.jsonl",
     "sha256": "b6397dbffa8eb87bf49a62428df7ad1360776bd079d4b415058ffe069d5a7094",
     "sample_count": 452
   },
   "input_hashes": {
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/manifests/emotion_judge_calibration452.jsonl": "b6397dbffa8eb87bf49a62428df7ad1360776bd079d4b415058ffe069d5a7094",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_prompt_v2/predictions.jsonl": "622719b80557e9a461d4e7a3e7a17cb9643e0ab9f1e548e5ddb6fd5557f619ba",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v1/predictions.jsonl": "46591c7cfb198f648f83a887bd8dbbf1a95a1fb98cfb2b0dec542a250209103a",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v1/accepted_rules.json": "de14a5f1dd651d6b0aef12e271d63fba9be94e3428e6184c5005e4804ef79072",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/candidate_hybrid_v2_predictions.jsonl": "42ca563357a1d2f2d219d1d5c910b49ea76808146dadd528f8aa877c21f475cb",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/candidate_hybrid_v2_metrics.json": "c30409b38e6d5a0631e5a6eaaf25980f952229560215f5a51e8a80fc11fe1c52",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/full_region_pairwise_predictions.jsonl": "04e1e9f62a9b3c15448831de32ea95a1d4d77030b81798b89ed30ef4e8f4b82d",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_happy_vs_excited_v1/stage2_predictions.jsonl": "0c0499a145f420a3937aecac90579b5303274b67b62af3ca1404e69b20d3c14c",
-    "/home/litianxiang/workplace/datasets/SpeechEditBench/local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/zh_happy_vs_surprise_playfulness_v1/stage2_predictions.jsonl": "cb7e9fce4101dbb3d2f396758353906821860da9a1ff1e8d418b5713c58819af"
+    "local_eval/emotion_judge/manifests/emotion_judge_calibration452.jsonl": "b6397dbffa8eb87bf49a62428df7ad1360776bd079d4b415058ffe069d5a7094",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_prompt_v2/predictions.jsonl": "622719b80557e9a461d4e7a3e7a17cb9643e0ab9f1e548e5ddb6fd5557f619ba",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v1/predictions.jsonl": "46591c7cfb198f648f83a887bd8dbbf1a95a1fb98cfb2b0dec542a250209103a",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_hybrid_v1/accepted_rules.json": "de14a5f1dd651d6b0aef12e271d63fba9be94e3428e6184c5005e4804ef79072",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/candidate_hybrid_v2_predictions.jsonl": "42ca563357a1d2f2d219d1d5c910b49ea76808146dadd528f8aa877c21f475cb",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/candidate_hybrid_v2_metrics.json": "c30409b38e6d5a0631e5a6eaaf25980f952229560215f5a51e8a80fc11fe1c52",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_neutral_dual_pairwise_v1/full_region_pairwise_predictions.jsonl": "04e1e9f62a9b3c15448831de32ea95a1d4d77030b81798b89ed30ef4e8f4b82d",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/en_happy_vs_excited_v1/stage2_predictions.jsonl": "0c0499a145f420a3937aecac90579b5303274b67b62af3ca1404e69b20d3c14c",
+    "local_eval/emotion_judge/results/qwen25_omni_gptq_int4/calibration452_stage2/zh_happy_vs_surprise_playfulness_v1/stage2_predictions.jsonl": "cb7e9fce4101dbb3d2f396758353906821860da9a1ff1e8d418b5713c58819af"
   },
   "output_hashes": {
     "predictions": "6ab23ae45a1d354f6a0548b14062a77f6b05e19b5f6a6f2b13d1e52659776dcf",

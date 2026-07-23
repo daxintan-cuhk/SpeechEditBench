@@ -7,7 +7,7 @@
     "name": "qwen25_omni_hybrid_v2",
     "model_revision": "Qwen/Qwen2.5-Omni-7B-GPTQ-Int4@6d33b6bb5114a84de7efd38310779242520e7d4e",
     "source_revision": "QwenLM/Qwen2.5-Omni@d8a31ca56c0456b6edfcbcbf4bdbb6ae2200ef42",
-    "source_lock_sha256": "de3d4bd7423419206ac3ff3b761c9714e835282da2e80369c39c8ed9406c9f46",
+    "source_lock_sha256": "6e87367949123cd5c5a1b36085f7c61e4758369d79202f7ab6885cad8a354346",
     "blind_classification": true,
     "reads_target_emotion_during_inference": false
   },
@@ -17,11 +17,11 @@
       "status": "modified"
     },
     "eval/metrics/qwen25_omni_emotion_judge.py": {
-      "sha256": "60ecf7cd47d23c09c081a56611894379ef1b114824200bc8a0eddde62ab3e87d",
+      "sha256": "c7ac67288973c9dd4c08cc28ec4a5151ab732b8d3abc07a8c29e816efda3accd",
       "status": "new"
     },
     "eval/metrics/qwen25_omni_hybrid_v2_source_lock.json": {
-      "sha256": "de3d4bd7423419206ac3ff3b761c9714e835282da2e80369c39c8ed9406c9f46",
+      "sha256": "6e87367949123cd5c5a1b36085f7c61e4758369d79202f7ab6885cad8a354346",
       "status": "new"
     }
   },
@@ -68,6 +68,16 @@
       "sha256": "b3ff1c564eeb064d3e61b60a45c6dc72af8154861478654962174fd46dffdbd7",
       "status": "pass",
       "reserve_accessed": false
+    },
+    "portable_paths_live_regression": {
+      "path": "logs/qwen25_omni_portable_paths_live_regression.log",
+      "sha256": "87b5f0d8298aa86d9c8838f916906f0fcab7ba90b402f07170ba8e44c1023407",
+      "status": "pass",
+      "rules_tested": 3,
+      "prediction_drift": false,
+      "reserve_accessed": false,
+      "included_in_pull_request": false,
+      "evidence_scope": "local_validation_log"
     }
   },
   "concurrency": {
@@ -104,5 +114,29 @@
     " M eval/metrics/emotion_accuracy.py",
     "?? eval/metrics/qwen25_omni_emotion_judge.py",
     "?? eval/metrics/qwen25_omni_hybrid_v2_source_lock.json"
-  ]
+  ],
+  "path_portability_normalization": {
+    "status": "validated",
+    "script_root_resolution": "Path(__file__).resolve().parents[3]",
+    "inference_prompts_changed": false,
+    "repair_rules_changed": false,
+    "fusion_logic_changed": false,
+    "model_revision_changed": false,
+    "repository_absolute_prefix_removed": true,
+    "public_record_contains_machine_specific_path": false,
+    "live_regression_passed": true,
+    "live_regression_rules_tested": [
+      "en_happy_vs_excited_v1",
+      "zh_happy_vs_surprise_playfulness_v1",
+      "en_neutral_dual_pairwise_v1"
+    ],
+    "live_regression_prediction_drift": false,
+    "reserve_accessed_during_retest": false
+  },
+  "vendored_source_license": {
+    "path": "local_eval/emotion_judge/third_party/Qwen2.5-Omni/LICENSE",
+    "sha256": "8d5eb5f806d01e8f5ea2c5a52f7d68ebc54b196b1cfbe1cd5dfa4b94e482a9c6",
+    "included_in_pull_request": true
+  },
+  "updated_at_utc": "2026-07-23T12:11:48.062015+00:00"
 }

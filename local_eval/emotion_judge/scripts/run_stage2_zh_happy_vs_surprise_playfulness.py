@@ -12,9 +12,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import run_stage2_en_happy_vs_excited as engine  # noqa: E402
 
 
-ROOT = Path(
-    "/home/litianxiang/workplace/datasets/SpeechEditBench"
-)
+ROOT = Path(__file__).resolve().parents[3]
 
 PROMPT_VERSION = (
     "stage2_zh_happy_vs_surprise_playfulness_v1"

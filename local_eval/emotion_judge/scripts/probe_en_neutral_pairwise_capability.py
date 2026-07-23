@@ -12,9 +12,7 @@ from typing import Any
 import torch
 
 
-ROOT = Path(
-    "/home/litianxiang/workplace/datasets/SpeechEditBench"
-)
+ROOT = Path(__file__).resolve().parents[3]
 
 SCRIPT_DIR = (
     ROOT
