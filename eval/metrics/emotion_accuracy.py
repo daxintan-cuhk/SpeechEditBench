@@ -3,7 +3,7 @@
 
 判断编辑后语音的情感是否与 anchor 中 target_emotion 一致。
 
-【当前实现】Gemini-compatible 多模态 Judge
+【当前实现】可切换的多模态 Judge
   将编辑后音频、编辑指令、转写文本一并提交给多模态 judge，
   要求输出 predicted_emotion/confidence/rationale JSON，并将预测标签与
   anchor.target_emotion 比对得到 EA。
@@ -23,16 +23,64 @@
   方案 C — 两者结合
     音频分类器给出客观分数，LLM judge 给出语义判断，两者综合报告。
 
-当前 predict() 已接入 eval/metrics/llm_multimodal.py；运行前需配置 GEMINI_API_KEY。
+当前 predict() 支持 Gemini-compatible 与冻结的本地 Qwen2.5-Omni Hybrid v2 后端。通过环境变量 SPEECHEDITBENCH_EMOTION_JUDGE 选择；默认保持 Gemini。
 """
 
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 from typing import Literal
 
+
 from eval.metrics.llm_multimodal import call_multimodal_llm_json
+
+
+EMOTION_JUDGE_ENV = (
+    "SPEECHEDITBENCH_EMOTION_JUDGE"
+)
+
+DEFAULT_EMOTION_JUDGE_BACKEND = "gemini"
+
+SUPPORTED_EMOTION_JUDGE_BACKENDS = {
+    "gemini",
+    "qwen25_omni_hybrid_v2",
+}
+
+
+def get_emotion_judge_backend() -> str:
+    """
+    返回当前情感评测后端。
+
+    环境变量：
+        SPEECHEDITBENCH_EMOTION_JUDGE=gemini
+        SPEECHEDITBENCH_EMOTION_JUDGE=qwen25_omni_hybrid_v2
+
+    默认值保持为 gemini，确保现有评测命令向后兼容。
+    """
+    backend = os.getenv(
+        EMOTION_JUDGE_ENV,
+        DEFAULT_EMOTION_JUDGE_BACKEND,
+    ).strip().lower()
+
+    if (
+        backend
+        not in SUPPORTED_EMOTION_JUDGE_BACKENDS
+    ):
+        supported = ", ".join(
+            sorted(
+                SUPPORTED_EMOTION_JUDGE_BACKENDS
+            )
+        )
+
+        raise ValueError(
+            f"不支持的情感评测后端："
+            f"{backend!r}。"
+            f"可选值：{supported}。"
+        )
+
+    return backend
 
 EMOTION_ALIASES = {
     "fear": "fearful",
@@ -121,22 +169,90 @@ def predict(
 
     参数：
         audio_path:  编辑后语音文件路径
-        language:    语言（"zh" 或 "en"），用于选择 prompt 语言
-        instruction: 原始编辑指令
+        language:    语言（"zh" 或 "en"）
+        instruction: 原始编辑指令；情感 judge 不使用该字段
         transcript:  编辑后语音的 ASR 转写文本
+        sample:      用于确定语言标签体系和稳定 sample_id
 
-    返回：情感标签字符串，如 "angry"、"happy" 等
+    返回：
+        情感标签字符串，如 "angry"、"happy" 等；
+        非法输出统一返回 "unknown"。
+
+    后端选择：
+        SPEECHEDITBENCH_EMOTION_JUDGE=gemini
+        SPEECHEDITBENCH_EMOTION_JUDGE=qwen25_omni_hybrid_v2
+
+    两种后端均不读取 anchor.target_emotion，保持 blind
+    emotion classification。
     """
-    del instruction  # v1.1 judge is target-conditioned by anchor, not instruction wording.
-    allowed = allowed_emotions_for_sample(sample, language)
-    prompt = _emotion_judge_prompt(language, transcript, allowed)
-    obj = call_multimodal_llm_json(
-        audio_path,
-        prompt,
-        caller_tag="eval_emotion_accuracy",
+    del instruction
+
+    allowed = allowed_emotions_for_sample(
+        sample,
+        language,
     )
-    pred = _normalize_emotion(str(obj.get("predicted_emotion", "")).strip())
-    return pred if pred in allowed else "unknown"
+
+    backend = get_emotion_judge_backend()
+
+    if backend == "gemini":
+        prompt = _emotion_judge_prompt(
+            language,
+            transcript,
+            allowed,
+        )
+
+        obj = call_multimodal_llm_json(
+            audio_path,
+            prompt,
+            caller_tag=(
+                "eval_emotion_accuracy"
+            ),
+        )
+
+        pred = _normalize_emotion(
+            str(
+                obj.get(
+                    "predicted_emotion",
+                    "",
+                )
+            ).strip()
+        )
+
+        return (
+            pred
+            if pred in allowed
+            else "unknown"
+        )
+
+    # 延迟导入：只有明确选择本地 Qwen 后端时，
+    # 才导入生产模块。导入本身仍不会加载模型；
+    # 模型在首次实际推理时才懒加载。
+    from eval.metrics.qwen25_omni_emotion_judge import (
+        predict_emotion,
+    )
+
+    sample_id = str(
+        (sample or {}).get(
+            "sample_id",
+            "",
+        )
+    )
+
+    pred = _normalize_emotion(
+        predict_emotion(
+            audio_path,
+            language=language,
+            transcript=transcript,
+            allowed_labels=allowed,
+            sample_id=sample_id,
+        )
+    )
+
+    return (
+        pred
+        if pred in allowed
+        else "unknown"
+    )
 
 
 # ── 主评估函数 ────────────────────────────────────────────────────────────────
