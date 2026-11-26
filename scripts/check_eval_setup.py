@@ -34,6 +34,7 @@ PACKAGE_SPECS = {
     "packaging": ("packaging", ">=26,<27"),
     "librosa": ("librosa", ">=0.11,<0.12"),
     "torch": ("torch", ">=2.11,<2.12"),
+    "torchaudio": ("torchaudio", ">=2.11,<2.12"),
     "transformers": ("transformers", ">=5.5,<5.6"),
     "funasr": ("funasr", ">=1.3,<1.4"),
     "modelscope": ("modelscope", ">=1.36,<1.37"),
